@@ -2,19 +2,28 @@
 
 SELECT * 
 FROM employees
-WHERE first_name IN ('Irena', 'Vidya', 'Maya') 
+WHERE (first_name = 'Irena',
+OR first_name = 'Vidya', 
+OR first_name = 'Maya') 
+AND gender = 'M'
 ORDER BY first_name ASC;
 	
 -- Update the query to order by first name and then last name. The first result should now be Irena Acton and the last should be Vidya Zweizig.
 SELECT * 
 FROM employees
-WHERE first_name IN ('Irena', 'Vidya', 'Maya') 
+WHERE (first_name = 'Irena',
+OR first_name = 'Vidya', 
+OR first_name = 'Maya') 
+AND gender = 'M'
 ORDER BY first_name ASC, last_name ASC;
 
 -- Change the order by clause so that you order by last name before first name. Your first result should still be Irena Acton but now the last result should be Maya Zyda.
 SELECT * 
 FROM employees
-WHERE first_name IN ('Irena', 'Vidya', 'Maya') 
+WHERE (first_name = 'Irena',
+OR first_name = 'Vidya', 
+OR first_name = 'Maya') 
+AND gender = 'M'
 ORDER BY last_name ASC, first_name ASC;
 
 -- Update your queries for employees with 'E' in their last name to sort the results by their employee number.
@@ -49,4 +58,8 @@ SELECT *
 FROM employees
 WHERE hire_date LIKE '199%' AND birth_date LIKE '%-12-25'
 ORDER BY birth_date ASC, hire_date DESC;
+
+
+
+
 
