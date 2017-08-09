@@ -4,7 +4,7 @@ FROM titles;
 
 
 --Update the previous query to sort the results alphabetically
-SELECT DISTINCT *
+SELECT DISTINCT title
 FROM titles
 ORDER BY title ASC;
 
