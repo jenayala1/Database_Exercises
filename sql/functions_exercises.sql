@@ -6,8 +6,6 @@ WHERE first_name IN('Irena','Vidya', 'Maya')
 GROUP BY gender;
 
 
-
-
 -- Update your queries for employees whose names start and end with 'E'. Use concat() to combine their first and last name together as a single column in your results.
 
 SELECT CONCAT(last_name, first_name)
@@ -27,7 +25,27 @@ WHERE hire_date LIKE '199%' AND birth_date LIKE '%-12-25';
 -- You will find there were some duplicate first and last name pairs in your previous results. 
 --Add a count() to your results and use ORDER BY to make it easier to find employees whose unusual name is shared with others.
 
-SELECT DISTINCT last_name, first_name, COUNT(last_name)
+SELECT *, COUNT(*) FROM employees 
+WHERE last_name NOT LIKE '%qu%'
+AND last_name LIKE '%q%'
+GROUP BY first_name, last_name HAVING COUNT(*) > 1
+ORDER BY COUNT(*) DESC;
+
+--- ALIAS EXERCISES--
+-- Return 10 employees in a result set named 'full_name' in the format of 'lastname, firstname' for each employee.
+
+SELECT CONCAT(last_name, first_name)'full_name'
 FROM employees
-WHERE last_name LIKE '%q%' AND last_name NOT LIKE '%qu%'
-ORDER BY last_name;
+LIMIT 10;
+
+-- Add the date of birth for each employee as 'DOB' to the query.
+SELECT CONCAT(last_name, first_name) full_name, birth_date AS 'DOB'
+FROM employees
+LIMIT 10;
+
+-- Update the query to format full name to include the employee number so it is formatted as 'employee number - lastname, firstname'.
+SELECT CONCAT(emp_no, ' - ', last_name, ', ', first_name) AS full_name, birth_date AS 'DOB'
+FROM employees
+LIMIT 10;
+
+
