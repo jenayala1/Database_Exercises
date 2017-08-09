@@ -1,5 +1,5 @@
 -- In your script, use DISTINCT to find the unique titles in the titles:
-SELECT DISTINCT *
+SELECT DISTINCT title
 FROM titles;
 
 
